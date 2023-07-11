@@ -6,7 +6,7 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 23:08:52 by oemelyan          #+#    #+#             */
-/*   Updated: 2023/07/05 18:37:11 by oemelyan         ###   ########.fr       */
+/*   Updated: 2023/07/08 13:34:39 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 static void ft_determination (char variable, int *printed, va_list arg_list)
 {
 	if (variable == 'c')
-		ft_single_char(va_arg (arg_list, char) &printed);
+		ft_single_char((char)va_arg (arg_list, int) &printed);
 	if (variable == 's')
-		ft_string (va_arg (arg_list, char), &printed);
+		ft_string (va_arg (arg_list, char *), &printed);
 	if (variable == 'p')
-		ft_void_pointer (va_arg (arg_list, char), &printed);
+		ft_void_pointer (va_arg (arg_list, void *), &printed);
 	if (variable == 'd' || variable == 'i')
 		ft_integer (va_arg (arg_list, int), &printed);
 	if (variable == 'u')
-		ft_unsigned_decimal (va_arg (arg_list, char), &printed);
+		ft_unsigned_decimal (va_arg (arg_list, unsigned int), &printed);
 	if (variable == 'x')
-		ft_hexa_lower (va_arg (arg_list, char), &printed);
+		ft_hexa_lower (va_arg (arg_list, void *), &printed);
 	if (variable == 'X')
-		ft_hexa_upper (va_arg (arg_list, char), &printed);
+		ft_hexa_upper (va_arg (arg_list, void *), &printed);
 	if (variable == '%')
 	{
-		write (1, '%', 1)
+		write (1, "%", 1)
 		(*printed)++;
 	}
 }

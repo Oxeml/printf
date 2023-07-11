@@ -1,7 +1,9 @@
 #include <stdio.h>
 void ft_putchar (char a, *printed)
+{
 	write (1, &a, 1);
 	*printed++;
+}
 
 void ft_hexa_lower (unsigned int a, int *printed)
 {
