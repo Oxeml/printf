@@ -6,13 +6,13 @@
 #    By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/11 19:29:30 by oemelyan          #+#    #+#              #
-#    Updated: 2023/07/11 20:21:56 by oemelyan         ###   ########.fr        #
+#    Updated: 2023/07/15 14:47:19 by oemelyan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftprintf.a
-SRC		=	ft_printf.c				\
-			_____
+SRC		=	ft_printf.c	\
+			functions.c
 
 OBJ			=	$(SRC:%.c=%.o)
 
@@ -23,8 +23,8 @@ all			:	$(NAME)
 $(NAME)		:	$(OBJ)
 	@ar rc $(NAME) $(OBJ)
 
-bonus		:	$(OBJ)
-	@ar rc $(NAME) $^
+# bonus		:	$(OBJ)
+# 	@ar rc $(NAME) $^
 
 $(OBJ)		:	$(SRC)
 	@cc $(CFLAGS) -c $^
