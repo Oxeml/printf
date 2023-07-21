@@ -6,7 +6,7 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 14:26:37 by oemelyan          #+#    #+#             */
-/*   Updated: 2023/07/15 14:48:49 by oemelyan         ###   ########.fr       */
+/*   Updated: 2023/07/21 15:19:29 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_putnbr_fd(int n, int fd, int *printed)
 	(*printed)++;
 }
 
-void	ft_hexa_lower(size_t a, int *printed)
+void	ft_hexa_lower(unsigned int a, int *printed)
 {
 	const char	*heks = "0123456789abcdef";
 

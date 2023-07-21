@@ -6,7 +6,7 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 15:32:41 by oemelyan          #+#    #+#             */
-/*   Updated: 2023/07/17 12:15:03 by oemelyan         ###   ########.fr       */
+/*   Updated: 2023/07/21 15:27:08 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,31 @@
 
 //to check limits for unsigned int and unsigned long here
 
-void	ft_hexa_upper(size_t a, int *printed)
+void	ft_hexa_upper(unsigned int a, int *printed)
 {
 	const char	*heks = "0123456789ABCDEF";
 
 	if (a >= 16)
-		ft_hexa_lower(a / 16, printed);
+		ft_hexa_upper(a / 16, printed);
 	ft_putchar2_fd(heks[a % 16], 1, printed);
 }
 
-void	ft_void_pointer(void *ptr, int fd, int *printed)
+void	ft_hexa_lower2(unsigned long a, int *printed)
+{
+	const char	*heks = "0123456789abcdef";
+
+	if (a >= 16)
+		ft_hexa_lower2(a / 16, printed);
+	ft_putchar2_fd(heks[a % 16], 1, printed);
+}
+
+void	ft_void_pointer(unsigned long ptr, int fd, int *printed)
 {
 	(void)fd;
 	ft_putchar_fd('0', 1);
 	ft_putchar_fd('x', 1);
 	(*printed) += 2;
-	ft_hexa_lower ((size_t)ptr, printed);
+	ft_hexa_lower2 (ptr, printed);
 }
 
 void	ft_putstr_fd(char *s, int fd, int *printed)
@@ -58,15 +67,15 @@ void	ft_determination(char variable, int *printed, va_list arg_list)
 	if (variable == 's')
 		ft_putstr_fd (va_arg (arg_list, char *), 1, printed);
 	if (variable == 'p')
-		ft_void_pointer (va_arg (arg_list, void *), 1, printed);
+		ft_void_pointer (va_arg (arg_list, unsigned long), 1, printed);
 	if (variable == 'd' || variable == 'i')
 		ft_putnbr_fd(va_arg (arg_list, int), 1, printed);
 	if (variable == 'u')
 		ft_unsigned_decimal (va_arg (arg_list, unsigned int), 1, printed);
 	if (variable == 'x')
-		ft_hexa_lower ((size_t)va_arg (arg_list, void *), printed);
+		ft_hexa_lower (va_arg (arg_list, unsigned int), printed);
 	if (variable == 'X')
-		ft_hexa_upper ((size_t)va_arg (arg_list, void *), printed);
+		ft_hexa_upper (va_arg (arg_list, unsigned int), printed);
 	if (variable == '%')
 	{
 		write (1, "%", 1);
@@ -101,3 +110,11 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (printed);
 }
+
+
+// int	main(void)
+// {
+// 	ft_printf("Test 1: %x\n", -9223372036854775808);
+// 	printf("Test 1: %x\n", -9223372036854775808);
+// 	return (0);
+// }
