@@ -6,40 +6,11 @@
 /*   By: oemelyan <oemelyan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 15:32:41 by oemelyan          #+#    #+#             */
-/*   Updated: 2023/07/21 15:27:08 by oemelyan         ###   ########.fr       */
+/*   Updated: 2023/07/21 23:37:11 by oemelyan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-//to check limits for unsigned int and unsigned long here
-
-void	ft_hexa_upper(unsigned int a, int *printed)
-{
-	const char	*heks = "0123456789ABCDEF";
-
-	if (a >= 16)
-		ft_hexa_upper(a / 16, printed);
-	ft_putchar2_fd(heks[a % 16], 1, printed);
-}
-
-void	ft_hexa_lower2(unsigned long a, int *printed)
-{
-	const char	*heks = "0123456789abcdef";
-
-	if (a >= 16)
-		ft_hexa_lower2(a / 16, printed);
-	ft_putchar2_fd(heks[a % 16], 1, printed);
-}
-
-void	ft_void_pointer(unsigned long ptr, int fd, int *printed)
-{
-	(void)fd;
-	ft_putchar_fd('0', 1);
-	ft_putchar_fd('x', 1);
-	(*printed) += 2;
-	ft_hexa_lower2 (ptr, printed);
-}
 
 void	ft_putstr_fd(char *s, int fd, int *printed)
 {
@@ -110,7 +81,6 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (printed);
 }
-
 
 // int	main(void)
 // {
